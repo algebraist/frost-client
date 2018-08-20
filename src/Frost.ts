@@ -4,18 +4,21 @@ import { Path, Method, StringifySecure } from './utils/utils'
 
 export interface Configuration {
   readonly host: string
+  readonly cuid?: string
   readonly email?: string
   readonly password?: string
   readonly timeout?: number
 }
 
 export class Frost {
+  private readonly cuid: string
   private readonly email: string
   private readonly password: string
   private readonly host: string
   private readonly timeout: number
 
   constructor(config: Configuration) {
+    this.cuid = config.cuid
     this.email = config.email
     this.password = config.password
     this.host = config.host
@@ -330,6 +333,27 @@ export class Frost {
     }
 
     const request = fetch(`${this.host}${Path.ACCOUNTS_PROFILE}`, options)
+
+    return Promise.race([request, this.timeoutPromise()])
+      .then(async (value: any) => {
+        if (value.ok) return await value.json()
+
+        throw await value.text()
+      })
+      .catch(e => {
+        throw e
+      })
+  }
+
+  getPublicKeys(cuid: string): Promise<{ readonly publicKey: string }> {
+    const options = {
+      method: Method.GET,
+      headers: new Headers({
+        'Content-Type': 'application/json',
+      }),
+    }
+
+    const request = fetch(`${this.host}${Path.PUBLIC_KEYS}/${cuid}`)
 
     return Promise.race([request, this.timeoutPromise()])
       .then(async (value: any) => {
