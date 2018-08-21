@@ -2,8 +2,8 @@
   "name": "@po.et/frost-client",
   "version": "0.2.0",
   "description": "Po.et - Frost client",
-  "main": "dist/Frost.js",
-  "types": "dist/Frost.d.ts",
+  "main": "dist/src/Frost.js",
+  "types": "dist/src/Frost.d.ts",
   "scripts": {
     "build": "tsc",
     "lint": "tslint -p ./tsconfig.json",
