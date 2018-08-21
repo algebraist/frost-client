@@ -48,15 +48,10 @@ export class Frost {
 
     const request = fetch(`${this.host}${Path.ACCOUNTS}`, options)
 
-    return Promise.race([request, this.timeoutPromise()])
-      .then(async (value: any) => {
-        if (value.ok) return await value.json()
-
-        throw await value.text()
-      })
-      .catch(e => {
-        throw e
-      })
+    return Promise.race([request, this.timeoutPromise()]).then(async (value: any) => {
+      if (value.ok) return await value.json()
+      throw await value.text()
+    })
   }
 
   login(email?: string, password?: string): Promise<{ readonly token: string }> {
@@ -75,15 +70,10 @@ export class Frost {
 
     const request = fetch(`${this.host}${Path.LOGIN}`, options)
 
-    return Promise.race([request, this.timeoutPromise()])
-      .then(async (value: any) => {
-        if (value.ok) return await value.json()
-
-        throw await value.text()
-      })
-      .catch(e => {
-        throw e
-      })
+    return Promise.race([request, this.timeoutPromise()]).then(async (value: any) => {
+      if (value.ok) return await value.json()
+      throw await value.text()
+    })
   }
 
   sendEmailVerifyAccount(token: string): Promise<string> {
@@ -97,15 +87,10 @@ export class Frost {
 
     const request = fetch(`${this.host}${Path.ACCOUNTS_VERIFY}`, options)
 
-    return Promise.race([request, this.timeoutPromise()])
-      .then(async (value: any) => {
-        if (value.ok) return await value.text()
-
-        throw await value.text()
-      })
-      .catch(e => {
-        throw e
-      })
+    return Promise.race([request, this.timeoutPromise()]).then(async (value: any) => {
+      if (value.ok) return await value.text()
+      throw await value.text()
+    })
   }
 
   verifyAccount(token: string): Promise<{ readonly token: string }> {
@@ -118,15 +103,10 @@ export class Frost {
 
     const request = fetch(`${this.host}${Path.ACCOUNTS_VERIFY}/${token}`, options)
 
-    return Promise.race([request, this.timeoutPromise()])
-      .then(async (value: any) => {
-        if (value.ok) return await value.json()
-
-        throw await value.text()
-      })
-      .catch(e => {
-        throw e
-      })
+    return Promise.race([request, this.timeoutPromise()]).then(async (value: any) => {
+      if (value.ok) return await value.json()
+      throw await value.text()
+    })
   }
 
   sendEmailForgotPassword(email?: string): Promise<string> {
@@ -142,15 +122,10 @@ export class Frost {
 
     const request = fetch(`${this.host}${Path.PASSWORD_RESET}`, options)
 
-    return Promise.race([request, this.timeoutPromise()])
-      .then(async (value: any) => {
-        if (value.ok) return await value.text()
-
-        throw await value.text()
-      })
-      .catch(e => {
-        throw e
-      })
+    return Promise.race([request, this.timeoutPromise()]).then(async (value: any) => {
+      if (value.ok) return await value.text()
+      throw await value.text()
+    })
   }
 
   changePassword(token: string, password: string, oldPassword: string): Promise<string> {
@@ -167,15 +142,10 @@ export class Frost {
     }
 
     const request = fetch(`${this.host}${Path.PASSWORD_CHANGE}`, options)
-    return Promise.race([request, this.timeoutPromise()])
-      .then(async (value: any) => {
-        if (value.ok) return await value.text()
-
-        throw await value.text()
-      })
-      .catch(e => {
-        throw e
-      })
+    return Promise.race([request, this.timeoutPromise()]).then(async (value: any) => {
+      if (value.ok) return await value.text()
+      throw await value.text()
+    })
   }
 
   changePasswordWithToken(token: string, password: string): Promise<{ readonly token: string }> {
@@ -192,15 +162,10 @@ export class Frost {
 
     const request = fetch(`${this.host}${Path.PASSWORD_CHANGE_TOKEN}`, options)
 
-    return Promise.race([request, this.timeoutPromise()])
-      .then(async (value: any) => {
-        if (value.ok) return await value.json()
-
-        throw await value.text()
-      })
-      .catch(e => {
-        throw e
-      })
+    return Promise.race([request, this.timeoutPromise()]).then(async (value: any) => {
+      if (value.ok) return await value.json()
+      throw await value.text()
+    })
   }
 
   createWork(token: string, work: WorkAttributes): Promise<{ readonly workId: string }> {
@@ -215,15 +180,10 @@ export class Frost {
 
     const request = fetch(`${this.host}${Path.WORKS}`, options)
 
-    return Promise.race([request, this.timeoutPromise()])
-      .then(async (value: any) => {
-        if (value.ok) return await value.json()
-
-        throw await value.text()
-      })
-      .catch(e => {
-        throw e
-      })
+    return Promise.race([request, this.timeoutPromise()]).then(async (value: any) => {
+      if (value.ok) return await value.json()
+      throw await value.text()
+    })
   }
 
   getWork(token: string, workId: string): Promise<WorkAttributes> {
@@ -237,15 +197,10 @@ export class Frost {
 
     const request = fetch(`${this.host}${Path.WORKS}/${workId}`, options)
 
-    return Promise.race([request, this.timeoutPromise()])
-      .then(async (value: any) => {
-        if (value.ok) return await value.json()
-
-        throw await value.text()
-      })
-      .catch(e => {
-        throw e
-      })
+    return Promise.race([request, this.timeoutPromise()]).then(async (value: any) => {
+      if (value.ok) return await value.json()
+      throw await value.text()
+    })
   }
 
   getWorks(token: string): Promise<ReadonlyArray<WorkAttributes>> {
@@ -259,15 +214,10 @@ export class Frost {
 
     const request = fetch(`${this.host}${Path.WORKS}`, options)
 
-    return Promise.race([request, this.timeoutPromise()])
-      .then(async (value: any) => {
-        if (value.ok) return await value.json()
-
-        throw await value.text()
-      })
-      .catch(e => {
-        throw e
-      })
+    return Promise.race([request, this.timeoutPromise()]).then(async (value: any) => {
+      if (value.ok) return await value.json()
+      throw await value.text()
+    })
   }
 
   getApiTokens(token: string): Promise<{ readonly apiTokens: ReadonlyArray<string> }> {
@@ -281,15 +231,10 @@ export class Frost {
 
     const request = fetch(`${this.host}${Path.TOKENS}`, options)
 
-    return Promise.race([request, this.timeoutPromise()])
-      .then(async (value: any) => {
-        if (value.ok) return await value.json()
-
-        throw await value.text()
-      })
-      .catch(e => {
-        throw e
-      })
+    return Promise.race([request, this.timeoutPromise()]).then(async (value: any) => {
+      if (value.ok) return await value.json()
+      throw await value.text()
+    })
   }
 
   async removeApiToken(token: string, tokenId: string): Promise<string> {
@@ -334,15 +279,10 @@ export class Frost {
 
     const request = fetch(`${this.host}${Path.ACCOUNTS_PROFILE}`, options)
 
-    return Promise.race([request, this.timeoutPromise()])
-      .then(async (value: any) => {
-        if (value.ok) return await value.json()
-
-        throw await value.text()
-      })
-      .catch(e => {
-        throw e
-      })
+    return Promise.race([request, this.timeoutPromise()]).then(async (value: any) => {
+      if (value.ok) return await value.json()
+      throw await value.text()
+    })
   }
 
   getPublicKeys(cuid?: string): Promise<{ readonly publicKey: string }> {
@@ -355,13 +295,9 @@ export class Frost {
 
     const request = fetch(`${this.host}${Path.PUBLIC_KEYS}/${cuid || this.cuid}`, options)
 
-    return Promise.race([request, this.timeoutPromise()])
-      .then(async (value: any) => {
-        if (value.ok) return await value.json()
-        throw await value.text()
-      })
-      .catch(e => {
-        throw e
-      })
+    return Promise.race([request, this.timeoutPromise()]).then(async (value: any) => {
+      if (value.ok) return await value.json()
+      throw await value.text()
+    })
   }
 }
