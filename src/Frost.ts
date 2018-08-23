@@ -285,15 +285,15 @@ export class Frost {
     })
   }
 
-  getPublicKeys(cuid?: string): Promise<{ readonly publicKey: string }> {
+  getPublicKeys(cuid?: string): Promise<[string]> {
     const options = {
       method: Method.GET,
       headers: new Headers({
         'Content-Type': 'application/json',
       }),
     }
-
-    const request = fetch(`${this.host}${Path.PUBLIC_KEYS}/${cuid || this.cuid}`, options)
+    const uid = cuid || this.cuid
+    const request = fetch(`${this.host}${Path.PUBLIC_KEYS}/${uid}`, options)
 
     return Promise.race([request, this.timeoutPromise()]).then(async (value: any) => {
       if (value.ok) return await value.json()
